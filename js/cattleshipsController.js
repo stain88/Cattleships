@@ -20,7 +20,7 @@ function cattleshipsController($firebaseObject) {
   // self.gameSetup();
 
   self.gameSetup = function(){
-    cattleRef.remove();
+    // cattleRef.remove();
     var defBoard = self.boardSetup('defense');
     player0.update({board: defBoard});
     var atkBoard = self.boardSetup('attack');
@@ -147,5 +147,7 @@ function cattleshipsController($firebaseObject) {
     var p = snapshot.val().move;
     console.log(p)
   })
-
+  self.clearGame = function() {
+    cattleRef.remove();
+  }
 }
