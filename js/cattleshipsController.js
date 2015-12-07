@@ -4,6 +4,7 @@ angular
 
 function cattleshipsController($firebaseObject) {
   var self = this;
+  self.PlayingState = {watching: 0, joining:1, playing:2}
   var cattleRef = new Firebase('https://angular-cattleships.firebaseio.com/');
   var player0 = cattleRef.child('player0');
   var player1 = cattleRef.child('player1');
@@ -24,7 +25,40 @@ function cattleshipsController($firebaseObject) {
     player0.update({board: defBoard});
     var atkBoard = self.boardSetup('attack');
     player1.update({board:atkBoard});
+    self.playingState = self.PlayingState.watching;
   };
+
+  self.waitToJoin = function() {
+    var selfie = this;
+    cattleRef.child('player0/online').on('value', function(onlineSnap){
+      if (onlineSnap.val() === null && selfie.playingState === self.PlayingState.watching) {
+        self.tryToJoin(0);
+      }
+    })
+    cattleRef.child('player1/online').on('value', function(onlineSnap){
+      if (onlineSnap.val() === null && selfie.playingState === self.PlayingState.watching) {
+        self.tryToJoin(1);
+      }
+    })
+  }
+
+  self.tryToJoin = function(playerNum) {
+    self.playingState = self.PlayingState.joining;
+    var selfie = this;
+    cattleRef.child('player' + playerNum + '/online').transaction(function(onlineVal) {
+      if (onlineVal===null) {
+        return true
+      }
+      else {
+        return
+      }
+    }, function(error, committed) {
+      if (committed) {
+        selfie.playingState = self.PlayingState.playing;
+        selfie.
+      }
+    })
+  }
 
   self.boardSetup = function(grid, size) {
     console.log(grid);
@@ -77,7 +111,7 @@ function cattleshipsController($firebaseObject) {
       }
       self.selectedShip.placed = true;
       console.log(self.selectedShip);
-      
+
     }
   }
 
