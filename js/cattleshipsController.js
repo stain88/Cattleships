@@ -4,13 +4,15 @@ angular
 
 function cattleshipsController() {
   var self = this;
-  self.board = {};
+  self.defenseBoard = {};
+  self.attackBoard = {};
   self.size;
   self.ships = {ship0: {name:"carrier", length:5, placed:false, initial:"C"},ship1: {name:"battleship", length:4, placed:false, initial:"B"}, ship2:{name:"cruiser", length:3, placed:false, initial:"R"},ship3:{name:"submarine", length:3, placed:false, initial:"S"},ship4:{name:"destroyer", length:2, placed:false, initial:"D"}};
   self.selectedShip = "";
   self.rotation = "horizontal";
 
-  self.boardSetup = function(size) {
+  self.boardSetup = function(grid, size) {
+    console.log(grid);
     self.size = size || 10;
     board = {};
     for (var i=0;i<self.size;i++) {
@@ -20,7 +22,8 @@ function cattleshipsController() {
       };
     };
     console.log(board);
-    self.board = board;
+    if (grid=="defense") self.defenseBoard = board;
+    if (grid=="attack") self.attackBoard = board;
   }
 
   self.can_play = function(row_id, index) {
@@ -34,12 +37,12 @@ function cattleshipsController() {
     if (self.rotation==="vertical") {
       if (row_id+self.selectedShip.length>self.size) return false;
       for (var i=0;i<self.selectedShip.length;i++) {
-        if (self.board["column"+(row_id+i)].rows["row"+index]!=="") return false;
+        if (self.defenseBoard["column"+(row_id+i)].rows["row"+index]!=="") return false;
       }
       return row_id + self.selectedShip.length<=self.size;
     } else if (self.rotation==="horizontal") {
       for (var i=0;i<self.selectedShip.length;i++) {
-        if (self.board["column"+row_id].rows["row"+(index+i)]!=="") return false;
+        if (self.defenseBoard["column"+row_id].rows["row"+(index+i)]!=="") return false;
       }
       return index + self.selectedShip.length<=self.size;
     }
@@ -49,11 +52,11 @@ function cattleshipsController() {
     if (self.can_place(row_id, index)) {
       if (self.rotation==="horizontal") {
         for (var i=0;i<self.selectedShip.length;i++) {
-          self.board["column"+(row_id)].rows["row"+(index+i)] = self.selectedShip.initial;
+          self.defenseBoard["column"+(row_id)].rows["row"+(index+i)] = self.selectedShip.initial;
         }
       } else {
         for (var i=0;i<self.selectedShip.length;i++) {
-          self.board["column"+(row_id+i)].rows["row"+index] = self.selectedShip.initial;
+          self.defenseBoard["column"+(row_id+i)].rows["row"+index] = self.selectedShip.initial;
         }
       }
       self.selectedShip.placed = true;
@@ -66,5 +69,9 @@ function cattleshipsController() {
       if (!self.ships[ship].placed) return false;
     }
     return true;
+  }
+
+  self.player_move = function(row_id, index) {
+    console.log("square: ", row_id, index);
   }
 }
