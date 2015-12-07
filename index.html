@@ -11,7 +11,7 @@
 <body ng-controller = "cattleshipsController as cat">
   <button ng-click="cat.boardSetup()">New Game</button>
   <div class="board_container" ng-repeat="row in cat.board">
-    <div class="board_square" ng-repeat="column in row.columns" class="square"></div>
+    <div class="board_square" ng-repeat="column in row.columns" class="square" ng-click="cat.can_play(row.id, $index)"></div>
   </div>
 </body>
 </html>
