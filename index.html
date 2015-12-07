@@ -26,5 +26,6 @@
     <li ng-class="{placed: ship.placed}" ng-repeat="ship in cat.ships" ng-click="cat.selectedShip=ship">{{ship.name}}</li>
   </ul>
   <button ng-click="cat.rotation=cat.rotation=='horizontal'?'vertical':'horizontal'">Change rotation</button>{{cat.rotation}}
+  <button ng-show="cat.all_ships_placed()">Start game</button>
 </body>
 </html>

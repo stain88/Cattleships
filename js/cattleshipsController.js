@@ -60,4 +60,11 @@ function cattleshipsController() {
       console.log(self.selectedShip);
     }
   }
+
+  self.all_ships_placed = function() {
+    for (var ship in self.ships) {
+      if (!self.ships[ship].placed) return false;
+    }
+    return true;
+  }
 }
