@@ -136,7 +136,7 @@ function cattleshipsController($firebaseObject, $firebaseArray) {
   }
 
   self.player_move = function(row_id, index) {
-    var playerTurn 
+    var playerTurn;
     count.transaction(function(current_value) {
       console.log(current_value);
       playerTurn = current_value;
