@@ -4,8 +4,14 @@
   <meta charset="UTF-8">
   <title>Angular Cattleships</title>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/cattleshipsController.js"></script>
+  <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
-  
+<body ng-controller = "cattleshipsController as cat">
+  <button ng-click="cat.boardSetup()">New Game</button>
+  <div class="board_container" ng-repeat="row in cat.board">
+    <div class="board_square" ng-repeat="column in row.columns" class="square"></div>
+  </div>
 </body>
 </html>
