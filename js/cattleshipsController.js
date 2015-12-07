@@ -5,6 +5,10 @@ angular
 function cattleshipsController($firebaseObject) {
   var self = this;
   var cattleRef = new Firebase('https://angular-cattleships.firebaseio.com/');
+  var player0 = cattleRef.child('player0');
+  var player1 = cattleRef.child('player1');
+  var p0Board = player0.child('board');
+  var p1Board = player1.child('board');
   self.data = $firebaseObject(cattleRef);
   self.defenseBoard = {};
   self.attackBoard = {};
@@ -12,13 +16,14 @@ function cattleshipsController($firebaseObject) {
   self.ships = {ship0: {name:"carrier", length:5, placed:false, initial:"C"},ship1: {name:"battleship", length:4, placed:false, initial:"B"}, ship2:{name:"cruiser", length:3, placed:false, initial:"R"},ship3:{name:"submarine", length:3, placed:false, initial:"S"},ship4:{name:"destroyer", length:2, placed:false, initial:"D"}};
   self.selectedShip = "";
   self.rotation = "horizontal";
+  // self.gameSetup();
 
   self.gameSetup = function(){
-    cattleRef.remove;
-    for (var i= 0; i<=1; i++) {
-      var playerRef = cattleRef.child('player' + i);
-      
-    }
+    cattleRef.remove();
+    var defBoard = self.boardSetup('defense');
+    player0.update({board: defBoard});
+    var atkBoard = self.boardSetup('attack');
+    player1.update({board:atkBoard});
   };
 
   self.boardSetup = function(grid, size) {
@@ -34,6 +39,7 @@ function cattleshipsController($firebaseObject) {
     console.log(board);
     if (grid=="defense") self.defenseBoard = board;
     if (grid=="attack") self.attackBoard = board;
+    return board;
   }
 
   self.can_play = function(row_id, index) {
@@ -71,6 +77,7 @@ function cattleshipsController($firebaseObject) {
       }
       self.selectedShip.placed = true;
       console.log(self.selectedShip);
+      
     }
   }
 
