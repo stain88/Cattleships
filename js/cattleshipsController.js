@@ -5,13 +5,17 @@ angular
 function cattleshipsController() {
   var self = this;
   self.board = {};
+  self.size;
+  self.ships = {ship0: {name:"carrier", length:5, placed:false, initial:"C"},ship1: {name:"battleship", length:4, placed:false, initial:"B"}, ship2:{name:"cruiser", length:3, placed:false, initial:"R"},ship3:{name:"submarine", length:3, placed:false, initial:"S"},ship4:{name:"destroyer", length:2, placed:false, initial:"D"}};
+  self.selectedShip = "";
+  self.rotation = "horizontal";
 
   self.boardSetup = function(size) {
-    size = size || 10;
+    self.size = size || 10;
     board = {};
-    for (var i=0;i<size;i++) {
+    for (var i=0;i<self.size;i++) {
       board["row"+i] = {id: i, "columns":{}};
-      for (var j=0;j<size;j++) {
+      for (var j=0;j<self.size;j++) {
         board["row"+i]["columns"]["column"+j]="";
       };
     };
@@ -21,5 +25,23 @@ function cattleshipsController() {
 
   self.can_play = function(row_id, index) {
     console.log("row: "+row_id, "index: "+index);
+    console.log(self.selectedShip.name);
+  }
+
+  self.can_place = function(row_id, index) {
+    if (!self.selectedShip) return;
+    if (self.rotation==="vertical") {
+      return row_id + self.selectedShip.length<self.size;
+    } else if (self.rotation==="horizontal") {
+      return index + self.selectedShip.length<self.size;
+    }
+  };
+
+  self.place_ship = function(row_id, index) {
+    if (self.can_place(row_id, index)) {
+      self.selectedShip.placed = true;
+      self.board["row"+row_id].columns["column"+index]=self.selectedShip.initial;
+      console.log(self.selectedShip);
+    }
   }
 }

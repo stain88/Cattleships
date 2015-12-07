@@ -1,1 +1,1 @@
-angular.module('cattleshipsApp', [])
+angular.module('cattleshipsApp', ['firebase'])

@@ -17,5 +17,16 @@
   height: 50px;
   font-size: 16px;
   float: left;
-  border: 1px solid red;
+  border: 1px solid black;
+}
+
+.red {
+  outline: 5px solid red;
+}
+.green {
+  outline: 5px solid green;
+}
+
+.placed {
+  text-decoration: line-through;
 }
