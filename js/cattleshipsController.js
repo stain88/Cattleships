@@ -2,14 +2,24 @@ angular
   .module('cattleshipsApp')
   .controller('cattleshipsController', cattleshipsController);
 
-function cattleshipsController() {
+function cattleshipsController($firebaseObject) {
   var self = this;
+  var cattleRef = new Firebase('https://angular-cattleships.firebaseio.com/');
+  self.data = $firebaseObject(cattleRef);
   self.defenseBoard = {};
   self.attackBoard = {};
   self.size;
   self.ships = {ship0: {name:"carrier", length:5, placed:false, initial:"C"},ship1: {name:"battleship", length:4, placed:false, initial:"B"}, ship2:{name:"cruiser", length:3, placed:false, initial:"R"},ship3:{name:"submarine", length:3, placed:false, initial:"S"},ship4:{name:"destroyer", length:2, placed:false, initial:"D"}};
   self.selectedShip = "";
   self.rotation = "horizontal";
+
+  self.gameSetup = function(){
+    cattleRef.remove;
+    for (var i= 0; i<=1; i++) {
+      var playerRef = cattleRef.child('player' + i);
+      
+    }
+  };
 
   self.boardSetup = function(grid, size) {
     console.log(grid);
@@ -73,5 +83,18 @@ function cattleshipsController() {
 
   self.player_move = function(row_id, index) {
     console.log("square: ", row_id, index);
+    cattleRef.push({
+      move: [row_id, index]
+    })
   }
+
+  self.makeMove =function(){
+    
+  }
+
+  cattleRef.on('child_added', function(snapshot){
+    var p = snapshot.val().move;
+    console.log(p)
+  })
+
 }
