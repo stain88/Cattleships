@@ -2,7 +2,7 @@ angular
   .module('cattleshipsApp')
   .controller('cattleshipsController', cattleshipsController);
 
-function cattleshipsController($firebaseObject) {
+function cattleshipsController($firebaseObject, $firebaseArray) {
   var self = this;
   self.PlayingState = {watching: 0, joining:1, playing:2}
   var cattleRef = new Firebase('https://angular-cattleships.firebaseio.com/');
@@ -64,7 +64,6 @@ function cattleshipsController($firebaseObject) {
 
   self.startPlaying = function (playerNum) {
     self.myPlayerRef = cattleRef.child('player'+playerNum);
-    console.log(self.myPlayerRef);
     self.opponentPlayerRef = cattleRef.child('player'+(1-playerNum));
     self.myPlayerRef.child('online').onDisconnect().remove();
   }
@@ -133,12 +132,19 @@ function cattleshipsController($firebaseObject) {
   }
 
   self.player_move = function(row_id, index) {
-    console.log("square: ", row_id, index);
-    console.log(self.opponentPlayerRef.val());
+    var board = $firebaseObject(self.opponentPlayerRef.child('board'));
+
+    board.$loaded(function() {
+      console.log(board["column"+row_id].rows['row'+index]);
+      self.attackBoard["column"+row_id].rows["row"+index] = board["column"+row_id].rows['row'.index];
+    });
+    // console.log(board["column"+row_id].rows["row"])
+    // console.log("square: ", row_id, index);
+    // console.log(self.opponentPlayerRef.val());
     // console.log(self.opponentPlayerRef.board["column"+row_id].rows["row"+index]);
-    cattleRef.push({
-      move: [row_id, index]
-    })
+    // cattleRef.push({
+    //   move: [row_id, index]
+    // })
   }
 
   self.makeMove =function(){
