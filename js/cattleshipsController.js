@@ -134,6 +134,8 @@ function cattleshipsController($firebaseObject) {
 
   self.player_move = function(row_id, index) {
     console.log("square: ", row_id, index);
+    console.log(self.opponentPlayerRef.val());
+    // console.log(self.opponentPlayerRef.board["column"+row_id].rows["row"+index]);
     cattleRef.push({
       move: [row_id, index]
     })
