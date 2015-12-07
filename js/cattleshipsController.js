@@ -30,6 +30,7 @@ function cattleshipsController() {
 
   self.can_place = function(row_id, index) {
     if (!self.selectedShip) return;
+    if (self.selectedShip.placed) return false;
     if (self.rotation==="vertical") {
       if (row_id+self.selectedShip.length>self.size) return false;
       for (var i=0;i<self.selectedShip.length;i++) {
