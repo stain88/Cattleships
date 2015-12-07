@@ -1,3 +1,4 @@
+
 .square {
   line-height: 50px;
   text-align: center;
@@ -10,6 +11,7 @@
   width: 520px;
   /*padding: 10px;*/
   display: inline-block;
+  /*margin: 0 auto;*/
 }
 
 .board_square {
@@ -36,4 +38,16 @@
 
 .placed {
   text-decoration: line-through;
+}
+
+.whole-board {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.container-left {
+  width: 50px;
+  float: left;
+  margin-top: -500px;
+  margin-left: 200px;
 }

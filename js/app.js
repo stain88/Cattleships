@@ -1,1 +1,3 @@
-angular.module('cattleshipsApp', ['firebase'])
+angular
+    .module('cattleshipsApp', ['firebase', 'ui.router'])
+    .config(MainRouter);
