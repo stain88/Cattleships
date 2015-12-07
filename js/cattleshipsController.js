@@ -136,7 +136,7 @@ function cattleshipsController($firebaseObject, $firebaseArray) {
 
     board.$loaded(function() {
       console.log(board["column"+row_id].rows['row'+index]);
-      self.attackBoard["column"+row_id].rows["row"+index] = board["column"+row_id].rows['row'.index];
+      self.attackBoard["column"+row_id].rows["row"+index] = board["column"+row_id].rows['row'+index];
     });
     // console.log(board["column"+row_id].rows["row"])
     // console.log("square: ", row_id, index);
