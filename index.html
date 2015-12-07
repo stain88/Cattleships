@@ -11,7 +11,8 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body ng-controller = "cattleshipsController as cat">
-  <button ng-click="cat.gameSetup()">New Game</button><br/>
+  <button ng-click="cat.clearGame()">New Game</button><br/>
+  <button ng-click="cat.gameSetup()">Join Game</button><br/>
   <div class="board_container" ng-repeat="row in cat.defenseBoard">
     <div ng-class="{red: !cat.can_place(row.id, $index) && hover, green: cat.can_place(row.id, $index) && hover}" ng-mouseenter="hover = true" ng-mouseleave="hover = false" id="defenseBoard" class="board_square" ng-repeat="column in row.rows" ng-click="cat.place_ship(row.id, $index)">
       <div ng-show="column==='C'" class="played C ng-hide">C</div>

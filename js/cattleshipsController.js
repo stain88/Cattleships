@@ -20,7 +20,7 @@ function cattleshipsController($firebaseObject) {
   // self.gameSetup();
 
   self.gameSetup = function(){
-    cattleRef.remove();
+    // cattleRef.remove();
     var defBoard = self.boardSetup('defense');
     player0.update({board: defBoard});
     var atkBoard = self.boardSetup('attack');
@@ -134,6 +134,8 @@ function cattleshipsController($firebaseObject) {
 
   self.player_move = function(row_id, index) {
     console.log("square: ", row_id, index);
+    console.log(self.opponentPlayerRef.val());
+    // console.log(self.opponentPlayerRef.board["column"+row_id].rows["row"+index]);
     cattleRef.push({
       move: [row_id, index]
     })
@@ -147,5 +149,7 @@ function cattleshipsController($firebaseObject) {
     var p = snapshot.val().move;
     console.log(p)
   })
-
+  self.clearGame = function() {
+    cattleRef.remove();
+  }
 }
