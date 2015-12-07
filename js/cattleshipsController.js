@@ -26,6 +26,7 @@ function cattleshipsController($firebaseObject) {
     var atkBoard = self.boardSetup('attack');
     player1.update({board:atkBoard});
     self.playingState = self.PlayingState.watching;
+    self.waitToJoin();
   };
 
   self.waitToJoin = function() {
@@ -48,16 +49,24 @@ function cattleshipsController($firebaseObject) {
     cattleRef.child('player' + playerNum + '/online').transaction(function(onlineVal) {
       if (onlineVal===null) {
         return true
-      }
-      else {
+      } else {
         return
       }
     }, function(error, committed) {
       if (committed) {
         selfie.playingState = self.PlayingState.playing;
-        selfie.
+        self.startPlaying(playerNum);
+      } else {
+        selfie.playingState = self.PlayingState.watching;
       }
     })
+  }
+
+  self.startPlaying = function (playerNum) {
+    self.myPlayerRef = cattleRef.child('player'+playerNum);
+    console.log(self.myPlayerRef);
+    self.opponentPlayerRef = cattleRef.child('player'+(1-playerNum));
+    self.myPlayerRef.child('online').onDisconnect().remove();
   }
 
   self.boardSetup = function(grid, size) {
@@ -76,10 +85,10 @@ function cattleshipsController($firebaseObject) {
     return board;
   }
 
-  self.can_play = function(row_id, index) {
-    console.log("row: "+row_id, "index: "+index);
-    console.log(self.selectedShip.name);
-  }
+  // self.can_play = function(row_id, index) {
+  //   console.log("row: "+row_id, "index: "+index);
+  //   console.log(self.selectedShip.name);
+  // }
 
   self.can_place = function(row_id, index) {
     if (!self.selectedShip) return;
@@ -112,6 +121,7 @@ function cattleshipsController($firebaseObject) {
       self.selectedShip.placed = true;
       console.log(self.selectedShip);
 
+      self.myPlayerRef.update({board:self.defenseBoard});
     }
   }
 
