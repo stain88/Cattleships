@@ -10,7 +10,7 @@ function cattleshipsController($firebaseObject, $firebaseArray) {
   var player1 = cattleRef.child('player1');
   var p0Board = player0.child('board');
   var p1Board = player1.child('board');
-  var count   = 0;
+  var count   = cattleRef.child('count');
   self.data = $firebaseObject(cattleRef);
   self.defenseBoard = {};
   self.attackBoard = {};
@@ -26,6 +26,7 @@ function cattleshipsController($firebaseObject, $firebaseArray) {
     player0.update({board: defBoard});
     var atkBoard = self.boardSetup('attack');
     player1.update({board:atkBoard});
+    count.update({count:0});
     self.playingState = self.PlayingState.watching;
     self.waitToJoin();
   };
@@ -134,13 +135,15 @@ function cattleshipsController($firebaseObject, $firebaseArray) {
 
   self.player_move = function(row_id, index) {
     var playerTurn = (count%2===0)? 'player0':'player1';
+    console.log(self.myPlayerRef.toString())
     if (self.myPlayerRef.toString().substr(-7)!==playerTurn) return;
     var board = $firebaseObject(self.opponentPlayerRef.child('board'));
 
     board.$loaded(function() {
       console.log(board["column"+row_id].rows['row'+index]);
       self.attackBoard["column"+row_id].rows["row"+index] = board["column"+row_id].rows['row'+index];
-      count++
+      count.update({count: count++ })
+      console.log(count)
     });
     console.log(self.attackBoard);
   }
