@@ -10,6 +10,7 @@ function cattleshipsController($firebaseObject, $firebaseArray) {
   var player1 = cattleRef.child('player1');
   var p0Board = player0.child('board');
   var p1Board = player1.child('board');
+  var count   = 0;
   self.data = $firebaseObject(cattleRef);
   self.defenseBoard = {};
   self.attackBoard = {};
@@ -132,31 +133,23 @@ function cattleshipsController($firebaseObject, $firebaseArray) {
   }
 
   self.player_move = function(row_id, index) {
+    var playerTurn = (count%2===0)? 'player0':'player1';
+    if (self.myPlayerRef.toString().substr(-7)!==playerTurn) return;
     var board = $firebaseObject(self.opponentPlayerRef.child('board'));
 
     board.$loaded(function() {
       console.log(board["column"+row_id].rows['row'+index]);
       self.attackBoard["column"+row_id].rows["row"+index] = board["column"+row_id].rows['row'+index];
+      count++
     });
     console.log(self.attackBoard);
-    // console.log(board["column"+row_id].rows["row"])
-    // console.log("square: ", row_id, index);
-    // console.log(self.opponentPlayerRef.val());
-    // console.log(self.opponentPlayerRef.board["column"+row_id].rows["row"+index]);
-    // cattleRef.push({
-    //   move: [row_id, index]
-    // })
   }
 
-  self.makeMove =function(){
-    
-  }
-
-  cattleRef.on('child_added', function(snapshot){
-    var p = snapshot.val().move;
-    console.log(p)
-  })
   self.clearGame = function() {
     cattleRef.remove();
+  }
+
+  self.checkForWin = function(){
+
   }
 }
