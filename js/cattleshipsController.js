@@ -14,9 +14,9 @@ function cattleshipsController() {
     self.size = size || 10;
     board = {};
     for (var i=0;i<self.size;i++) {
-      board["row"+i] = {id: i, "columns":{}};
+      board["column"+i] = {id: i, "rows":{}};
       for (var j=0;j<self.size;j++) {
-        board["row"+i]["columns"]["column"+j]="";
+        board["column"+i]["rows"]["row"+j]="";
       };
     };
     console.log(board);
@@ -31,16 +31,24 @@ function cattleshipsController() {
   self.can_place = function(row_id, index) {
     if (!self.selectedShip) return;
     if (self.rotation==="vertical") {
-      return row_id + self.selectedShip.length<self.size;
+      return row_id + self.selectedShip.length<=self.size;
     } else if (self.rotation==="horizontal") {
-      return index + self.selectedShip.length<self.size;
+      return index + self.selectedShip.length<=self.size;
     }
   };
 
   self.place_ship = function(row_id, index) {
     if (self.can_place(row_id, index)) {
+      if (self.rotation==="horizontal") {
+        for (var i=0;i<self.selectedShip.length;i++) {
+          self.board["column"+(row_id)].rows["row"+(index+i)] = self.selectedShip.initial;
+        }
+      } else {
+        for (var i=0;i<self.selectedShip.length;i++) {
+          self.board["column"+(row_id+i)].rows["row"+index] = self.selectedShip.initial;
+        }
+      }
       self.selectedShip.placed = true;
-      self.board["row"+row_id].columns["column"+index]=self.selectedShip.initial;
       console.log(self.selectedShip);
     }
   }

@@ -13,7 +13,7 @@
 <body ng-controller = "cattleshipsController as cat">
   <button ng-click="cat.boardSetup()">New Game</button><br/>
   <div class="board_container" ng-repeat="row in cat.board">
-    <div ng-class="{red: !cat.can_place(row.id, $index) && hover, green: cat.can_place(row.id, $index) && hover}" ng-mouseenter="hover = true" ng-mouseleave="hover = false" id="defenseBoard" class="board_square" ng-repeat="column in row.columns" ng-click="cat.place_ship(row.id, $index)">
+    <div ng-class="{red: !cat.can_place(row.id, $index) && hover, green: cat.can_place(row.id, $index) && hover}" ng-mouseenter="hover = true" ng-mouseleave="hover = false" id="defenseBoard" class="board_square" ng-repeat="column in row.rows" ng-click="cat.place_ship(row.id, $index)">
       <div ng-show="column==='C'" class="played C ng-hide">C</div>
       <div ng-show="column==='B'" class="played B ng-hide">B</div>
       <div ng-show="column==='R'" class="played R ng-hide">R</div>
