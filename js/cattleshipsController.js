@@ -142,7 +142,7 @@ function cattleshipsController($firebaseObject, $firebaseArray) {
       playerTurn = current_value;
     });
     console.log(playerTurn);
-    playerTurn = (count.turn%2===0)? 'player0':'player1';
+    playerTurn = (playerTurn%2===0)? 'player0':'player1';
     if (self.myPlayerRef.toString().substr(-7)!==playerTurn) return;
     var board = $firebaseObject(self.opponentPlayerRef.child('board'));
 
