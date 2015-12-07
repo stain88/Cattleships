@@ -15,7 +15,7 @@ function cattleshipsController($firebaseObject, $firebaseArray) {
   self.defenseBoard = {};
   self.attackBoard = {};
   self.size;
-  self.ships = {ship0: {name:"carrier", length:5, placed:false, initial:"C"},ship1: {name:"battleship", length:4, placed:false, initial:"B"}, ship2:{name:"cruiser", length:3, placed:false, initial:"R"},ship3:{name:"submarine", length:3, placed:false, initial:"S"},ship4:{name:"destroyer", length:2, placed:false, initial:"D"}};
+  self.ships = {ship0: {name:"hipster cat", length:5, placed:false, initial:"C"},ship1: {name:"grumpty cat", length:4, placed:false, initial:"B"}, ship2:{name:"angry cat", length:3, placed:false, initial:"R"},ship3:{name:"possessed cat", length:3, placed:false, initial:"S"},ship4:{name:"hissler cat", length:2, placed:false, initial:"D"}};
   self.selectedShip = "";
   self.rotation = "horizontal";
   // self.gameSetup();

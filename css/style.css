@@ -1,3 +1,7 @@
+body {
+ 
+}
+
 
 .square {
   line-height: 50px;
@@ -50,4 +54,31 @@
   float: left;
   margin-top: -500px;
   margin-left: 200px;
+}
+
+.C {
+  background-image: url("/css/images/cats/cat1.png");
+  background-size:cover;
+}
+
+.B {
+  background-image: url("/css/images/cats/cat3.png");
+  background-size:cover;
+}
+
+.R {
+
+  background-image: url("/css/images/cats/cat4.png");
+  background-size:cover;
+}
+
+.D {
+  background-image: url("/css/images/cats/cat5.png");
+  background-size:cover;
+}
+
+.S {
+  background-image: url("/css/images/cats/cat7.png");
+  background-size:cover;
+
 }
