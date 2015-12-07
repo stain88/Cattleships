@@ -31,8 +31,15 @@ function cattleshipsController() {
   self.can_place = function(row_id, index) {
     if (!self.selectedShip) return;
     if (self.rotation==="vertical") {
+      if (row_id+self.selectedShip.length>self.size) return false;
+      for (var i=0;i<self.selectedShip.length;i++) {
+        if (self.board["column"+(row_id+i)].rows["row"+index]!=="") return false;
+      }
       return row_id + self.selectedShip.length<=self.size;
     } else if (self.rotation==="horizontal") {
+      for (var i=0;i<self.selectedShip.length;i++) {
+        if (self.board["column"+row_id].rows["row"+(index+i)]!=="") return false;
+      }
       return index + self.selectedShip.length<=self.size;
     }
   };
