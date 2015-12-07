@@ -11,38 +11,15 @@
   <script src="js/cattleshipsController.js"></script>
  
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.0.1/css/foundation.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.4.0/animate.min.css">
   <link rel="stylesheet" href="css/style.css">
+
 
 </head>
 
 <body ng-controller = "cattleshipsController as cat">
-  <div class="row whole-board">
-  
-  <header><img src="css/images/logo-fin.png" width="500" height="200"></header>
-  <button ng-click="cat.clearGame()" ng-click="ship-button=!ship-button" class="hollow button">New Game</button>
-  <button ng-click="cat.gameSetup()">Join Game</button><br/>
-  <div class="board_container" ng-repeat="row in cat.defenseBoard">
-    <div ng-class="{red: !cat.can_place(row.id, $index) && hover, green: cat.can_place(row.id, $index) && hover}" ng-mouseenter="hover = true" ng-mouseleave="hover = false" id="defenseBoard" class="board_square" ng-repeat="column in row.rows" ng-click="cat.place_ship(row.id, $index)">
-      <div ng-show="column==='C'" class="played C ng-hide"></div>
-      <div ng-show="column==='B'" class="played B ng-hide"></div>
-      <div ng-show="column==='R'" class="played R ng-hide"></div>
-      <div ng-show="column==='D'" class="played D ng-hide"></div>
-      <div ng-show="column==='S'" class="played S ng-hide"></div>
-      <div ng-hide="column" class="can_play"></div>
-    </div>
-  </div><br/>
-  <button ng-class="{placed: ship.placed}" ng-repeat="ship in cat.ships" ng-click="cat.selectedShip=ship" class="hollow button">{{ship.name}}</button>
-  <button ng-click="cat.rotation=cat.rotation=='horizontal'?'vertical':'horizontal'" class="hollow button">Change rotation</button>{{cat.rotation}}
-  <button class="hollow button" ng-show="cat.all_ships_placed()" ng-click="cat.boardSetup('attack')">Start game</button><br/>
-  <div class="board_container" ng-repeat="row in cat.attackBoard">
-    <div id="attackBoard" class="board_square" ng-repeat="column in row.rows" ng-click="cat.player_move(row.id, $index)">
-      <div ng-show="column==='C'" class="played C ng-hide"></div>
-      <div ng-show="column==='B'" class="played B ng-hide"></div>
-      <div ng-show="column==='R'" class="played R ng-hide"></div>
-      <div ng-show="column==='D'" class="played D ng-hide"></div>
-      <div ng-show="column==='S'" class="played S ng-hide"></div>
-      <div ng-hide="column" class="can_play"></div>
-    </div>
-  </div><br/>
+
+  <div ui-view></div>
+
 </body>
 </html>
