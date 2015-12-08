@@ -171,7 +171,6 @@ function cattleshipsController($firebaseObject, $firebaseArray) {
       self.attackBoard["column" + row_id].rows["row" + index] = board["column" + row_id].rows['row' + index] || 'M';
       count.transaction(function(current_value) {
         return current_value + 1;
-        console.log(count)
       })
     });
   }
