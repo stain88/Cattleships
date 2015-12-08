@@ -24,11 +24,11 @@ function cattleshipsController($firebaseObject, $firebaseArray) {
     ship4:{name:"hissler cat", length:2, placed:false, initial:"FD"}
   }},
   {ships: {
-    ship0: {name:"hipster cat", length:5, placed:false, initial:"C"},
-    ship1: {name:"grumpty cat", length:4, placed:false, initial:"B"}, 
-    ship2:{name:"angry cat", length:3, placed:false, initial:"R"},
-    ship3:{name:"possessed cat", length:3, placed:false, initial:"S"},
-    ship4:{name:"hissler cat", length:2, placed:false, initial:"D"}
+    ship0: {name:"nosey cow", length:5, placed:false, initial:"BC"},
+    ship1: {name:"psycho cow", length:4, placed:false, initial:"BB"}, 
+    ship2:{name:"curious cow", length:3, placed:false, initial:"BR"},
+    ship3:{name:"tame cow", length:3, placed:false, initial:"BS"},
+    ship4:{name:"mad cow", length:2, placed:false, initial:"BD"}
   }}
   ]
   self.ships = {};
