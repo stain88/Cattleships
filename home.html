@@ -24,6 +24,7 @@
 <button ng-class="{placed: ship.placed}" ng-repeat="ship in cat.ships" ng-click="cat.selectedShip=ship" class="alert hollow button">{{ship.name}}</button>
 <button ng-click="cat.rotation=cat.rotation=='horizontal'?'vertical':'horizontal'" class="alert hollow button">Change rotation</button>{{cat.rotation}}
 <button class="alert hollow button" ng-show="cat.all_ships_placed()" ng-click="cat.boardSetup('attack')">Start game</button><br/>
+<div class="new-join">{{cat.message}}</div>
 <div class="board_container" ng-repeat="row in cat.attackBoard">
   <div id="attackBoard" class="board_square" ng-repeat="column in row.rows" ng-click="cat.player_move(row.id, $index)">
     <div ng-show="column==='C'" class="played C ng-hide"></div>
@@ -31,6 +32,7 @@
     <div ng-show="column==='R'" class="played R ng-hide"></div>
     <div ng-show="column==='D'" class="played D ng-hide"></div>
     <div ng-show="column==='S'" class="played S ng-hide"></div>
+    <div ng-show="column==='M'" class="played M ng-hide">M</div>
     <div ng-hide="column" class="can_play"></div>
   </div>
 </div><br/>
