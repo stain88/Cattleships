@@ -178,8 +178,7 @@ function cattleshipsController($firebaseObject, $firebaseArray) {
   self.checkForWin = function(){
     var winMessage = cattleRef.child('winMessage')
     if (targetsLeft === 0) {
-      winMessage.$bindTo(self, "winText")
-      winText.text = self.myPlayerRef.toString().substr(-7) + " has won!" 
+
     }
   }
 }
