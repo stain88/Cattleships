@@ -21,7 +21,6 @@
 <button ng-click="cat.rotation=cat.rotation=='horizontal'?'vertical':'horizontal'" class="alert hollow button">Change rotation</button>{{cat.rotation}}
 <button class="alert hollow button" ng-show="cat.all_ships_placed()" ng-click="cat.boardSetup('attack')">Start game</button><br/>
 <div class="new-join">{{cat.message}}</div>
-<div class="new-join">{{cat.winMessage}}</div>
 <div class="board_container" ng-repeat="row in cat.attackBoard">
   <div id="attackBoard" class="board_square" ng-repeat="column in row.rows" ng-click="cat.player_move(row.id, $index)">
     <div ng-show="column" class="played ng-hide" ng-class="column"></div>
