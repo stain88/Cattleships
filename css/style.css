@@ -10,11 +10,16 @@ body {
   background: -ms-linear-gradient(left, #94FFB8, #5CB8E6);
   top: 0;
   left: 0;
-  border: 12px solid red;
+/*  border: 12px solid red;*/
   width: 100%;
   height: auto;
   margin: 0;
   padding: 0;
+}
+
+.landingContainer {
+  height: 100vh;
+  border: 12px solid red;
 }
 
 .square {
@@ -123,3 +128,11 @@ p {
   padding: 50px;
   text-align: center;
 }
+
+.game {
+  border: 12px solid red;
+  width: 100%;
+  height: auto;
+  padding-bottom: 228px;
+}
+
