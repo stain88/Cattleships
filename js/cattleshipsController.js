@@ -158,12 +158,16 @@ function cattleshipsController($firebaseObject, $firebaseArray) {
       self.attackBoard["column" + row_id].rows["row" + index] = board["column" + row_id].rows['row' + index] || 'M';
       count.transaction(function(current_value) {
         return current_value + 1;
+        console.log(count)
       })
     });
   }
 
   self.clearGame = function() {
     cattleRef.remove();
+    count.transaction(function(current_value) {
+      return (current_value = 0)
+    });
   }
 
   self.checkForWin = function(){
