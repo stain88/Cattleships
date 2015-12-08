@@ -15,13 +15,23 @@ function cattleshipsController($firebaseObject, $firebaseArray) {
   self.defenseBoard = {};
   self.attackBoard = {};
   self.size;
-  self.ships = {
+  var catsAndCows = [
+    {ships: {
+    ship0: {name:"hipster cat", length:5, placed:false, initial:"FC"},
+    ship1: {name:"grumpty cat", length:4, placed:false, initial:"FB"}, 
+    ship2:{name:"angry cat", length:3, placed:false, initial:"FR"},
+    ship3:{name:"possessed cat", length:3, placed:false, initial:"FS"},
+    ship4:{name:"hissler cat", length:2, placed:false, initial:"FD"}
+  }},
+  {ships: {
     ship0: {name:"hipster cat", length:5, placed:false, initial:"C"},
     ship1: {name:"grumpty cat", length:4, placed:false, initial:"B"}, 
     ship2:{name:"angry cat", length:3, placed:false, initial:"R"},
     ship3:{name:"possessed cat", length:3, placed:false, initial:"S"},
     ship4:{name:"hissler cat", length:2, placed:false, initial:"D"}
-  };
+  }}
+  ]
+  self.ships = {};
   self.selectedShip = "";
   self.rotation = "horizontal";
 
@@ -73,6 +83,7 @@ function cattleshipsController($firebaseObject, $firebaseArray) {
   self.startPlaying = function (playerNum) {
     self.myPlayerRef = cattleRef.child('player' + playerNum);
     self.opponentPlayerRef = cattleRef.child('player' + (1-playerNum));
+    self.ships = catsAndCows[playerNum].ships;
     self.myPlayerRef.child('online').onDisconnect().remove();
   }
 
