@@ -11,7 +11,7 @@ function cattleshipsController($firebaseObject, $firebaseArray) {
   var p0Board = player0.child('board');
   var p1Board = player1.child('board');
   var count   = cattleRef.child('count');
-  var targetsLeft = 1;
+  var targetsLeft = 17;
   self.data = $firebaseObject(cattleRef);
   self.defenseBoard = {};
   self.attackBoard = {};
@@ -171,6 +171,7 @@ function cattleshipsController($firebaseObject, $firebaseArray) {
 
   self.clearGame = function() {
     cattleRef.remove();
+    targetsLeft = 17;
     count.transaction(function(current_value) {
       return (current_value = 0)
     });
