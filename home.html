@@ -24,7 +24,6 @@
 <div class="board_container" ng-repeat="row in cat.attackBoard">
   <div id="attackBoard" class="board_square" ng-repeat="column in row.rows" ng-click="cat.player_move(row.id, $index)">
     <div ng-show="column" class="played ng-hide" ng-class="column"></div>
-    <div ng-show="column" class="played ng-hide" ng-class="column">M</div>
     <div ng-hide="column" class="can_play"></div>
   </div>
 </div><br/>
