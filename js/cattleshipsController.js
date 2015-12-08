@@ -146,15 +146,12 @@ function cattleshipsController($firebaseObject, $firebaseArray) {
     count.transaction(function(current_value) {
       playerTurn = current_value;
     });
-
-
     playerTurn = (playerTurn % 2 === 0)? 'player0':'player1';
     if (self.myPlayerRef.toString().substr(-7) !== playerTurn) {
       self.message = "It is your opponent's turn";
       return;
     }
     else self.message = "It is your turn";
-
     var board = $firebaseObject(self.opponentPlayerRef.child('board'));
 
     board.$loaded(function() {
@@ -167,9 +164,6 @@ function cattleshipsController($firebaseObject, $firebaseArray) {
 
   self.clearGame = function() {
     cattleRef.remove();
-    count.transaction(function(current_value) {
-      return current_value = 0 }
-
   }
 
   self.checkForWin = function(){
