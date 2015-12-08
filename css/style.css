@@ -3,11 +3,18 @@ body {
   background-size: 100%, 100%;
   box-shadow: inset 0 0 100px hsla(0,0%,0%,.3);*/
   background: gradient(linear, left top, right top, from(#94FFB8), to(#5CB8E6));
-    background: -webkit-gradient(linear, left top, right top, from(#94FFB8), to(#5CB8E6));
-    background: -webkit-linear-gradient(left, #94FFB8, #5CB8E6);
-    background: -moz-linear-gradient(left, #94FFB8, #5CB8E6);
-    background: -o-linear-gradient(left, #94FFB8, #5CB8E6);
-    background: -ms-linear-gradient(left, #94FFB8, #5CB8E6);
+  background: -webkit-gradient(linear, left top, right top, from(#94FFB8), to(#5CB8E6));
+  background: -webkit-linear-gradient(left, #94FFB8, #5CB8E6);
+  background: -moz-linear-gradient(left, #94FFB8, #5CB8E6);
+  background: -o-linear-gradient(left, #94FFB8, #5CB8E6);
+  background: -ms-linear-gradient(left, #94FFB8, #5CB8E6);
+  top: 0;
+  left: 0;
+  border: 12px solid red;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  padding: 0;
 }
 
 .square {
@@ -20,9 +27,7 @@ body {
 
 .board_container {
   width: 520px;
-  /*padding: 10px;*/
   display: inline-block;
-  /*margin: 0 auto;*/
 }
 
 .board_square {
@@ -63,31 +68,29 @@ body {
   margin-left: 200px;
 }
 
-.C {
+.FC {
   background-image: url("/css/images/cats/cat1.png");
   background-size:cover;
 }
 
-.B {
+.FB {
   background-image: url("/css/images/cats/cat3.png");
   background-size:cover;
 }
 
-.R {
-
+.FR {
   background-image: url("/css/images/cats/cat4.png");
   background-size:cover;
 }
 
-.D {
+.FD {
   background-image: url("/css/images/cats/cat5.png");
   background-size:cover;
 }
 
-.S {
+.FS {
   background-image: url("/css/images/cats/cat7.png");
   background-size:cover;
-
 }
 
 .landing-logo {
@@ -119,16 +122,4 @@ button.button.active {
 p {
   padding: 50px;
   text-align: center;
-}
-
-body{
-  
-  top: 0;
-  left: 0;
-  border: 12px solid red;
-  width: 100%;
-  height: auto;
-  margin: 0;
-  padding: 0;
-  
 }

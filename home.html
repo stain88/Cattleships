@@ -13,11 +13,7 @@
 </div>
 <div class="board_container" ng-repeat="row in cat.defenseBoard">
   <div ng-class="{red: !cat.can_place(row.id, $index) && hover, green: cat.can_place(row.id, $index) && hover}" ng-mouseenter="hover = true" ng-mouseleave="hover = false" id="defenseBoard" class="board_square" ng-repeat="column in row.rows" ng-click="cat.place_ship(row.id, $index)">
-    <div ng-show="column==='C'" class="played C ng-hide"></div>
-    <div ng-show="column==='B'" class="played B ng-hide"></div>
-    <div ng-show="column==='R'" class="played R ng-hide"></div>
-    <div ng-show="column==='D'" class="played D ng-hide"></div>
-    <div ng-show="column==='S'" class="played S ng-hide"></div>
+    <div ng-show="column" class="played ng-hide" ng-class="column"></div>
     <div ng-hide="column" class="can_play"></div>
   </div>
 </div><br/>
@@ -27,12 +23,8 @@
 <div class="new-join">{{cat.message}}</div>
 <div class="board_container" ng-repeat="row in cat.attackBoard">
   <div id="attackBoard" class="board_square" ng-repeat="column in row.rows" ng-click="cat.player_move(row.id, $index)">
-    <div ng-show="column==='C'" class="played C ng-hide"></div>
-    <div ng-show="column==='B'" class="played B ng-hide"></div>
-    <div ng-show="column==='R'" class="played R ng-hide"></div>
-    <div ng-show="column==='D'" class="played D ng-hide"></div>
-    <div ng-show="column==='S'" class="played S ng-hide"></div>
-    <div ng-show="column==='M'" class="played M ng-hide">M</div>
+    <div ng-show="column" class="played ng-hide" ng-class="column"></div>
+    <div ng-show="column" class="played ng-hide" ng-class="column">M</div>
     <div ng-hide="column" class="can_play"></div>
   </div>
 </div><br/>
