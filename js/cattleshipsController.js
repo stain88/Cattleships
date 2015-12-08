@@ -11,6 +11,7 @@ function cattleshipsController($firebaseObject, $firebaseArray) {
   var p0Board = player0.child('board');
   var p1Board = player1.child('board');
   var count   = cattleRef.child('count');
+  var targetsLeft = 17;
   self.data = $firebaseObject(cattleRef);
   self.defenseBoard = {};
   self.attackBoard = {};
@@ -155,6 +156,10 @@ function cattleshipsController($firebaseObject, $firebaseArray) {
     var board = $firebaseObject(self.opponentPlayerRef.child('board'));
 
     board.$loaded(function() {
+      if (board["column" + row_id].rows['row' + index]) {
+        targetsLeft--;
+        checkForWin();
+      }
       self.attackBoard["column" + row_id].rows["row" + index] = board["column" + row_id].rows['row' + index] || 'M';
       count.transaction(function(current_value) {
         return current_value + 1;
@@ -171,6 +176,10 @@ function cattleshipsController($firebaseObject, $firebaseArray) {
   }
 
   self.checkForWin = function(){
-
+    var winMessage = cattleRef.child('winMessage')
+    if (targetsLeft === 0) {
+      winMessage.$bindTo(self, "winText")
+      winText.text = self.myPlayerRef.toString().substr(-7) + " has won!" 
+    }
   }
 }
