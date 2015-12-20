@@ -71,57 +71,57 @@ body {
 }
 
 .FC {
-  background-image: url("/css/images/cats/cat1.png");
+  background-image: url("css/images/cats/cat1.png");
   background-size:cover;
 }
 
 .FB {
-  background-image: url("/css/images/cats/cat3.png");
+  background-image: url("css/images/cats/cat3.png");
   background-size:cover;
 }
 
 .FR {
-  background-image: url("/css/images/cats/cat4.png");
+  background-image: url("css/images/cats/cat4.png");
   background-size:cover;
 }
 
 .FD {
-  background-image: url("/css/images/cats/cat5.png");
+  background-image: url("css/images/cats/cat5.png");
   background-size:cover;
 }
 
 .FS {
-  background-image: url("/css/images/cats/cat7.png");
+  background-image: url("css/images/cats/cat7.png");
   background-size:cover;
 }
 
 .BC {
-  background-image: url("/css/images/cows/cow1.png");
+  background-image: url("css/images/cows/cow1.png");
   background-size:cover;
 }
 
 .BB {
-  background-image: url("/css/images/cows/cow3.png");
+  background-image: url("css/images/cows/cow3.png");
   background-size:cover;
 }
 
 .BR {
-  background-image: url("/css/images/cows/cow4.png");
+  background-image: url("css/images/cows/cow4.png");
   background-size:cover;
 }
 
 .BD {
-  background-image: url("/css/images/cows/cow5.png");
+  background-image: url("css/images/cows/cow5.png");
   background-size:cover;
 }
 
 .BS {
-  background-image: url("/css/images/cows/cow6.png");
+  background-image: url("css/images/cows/cow6.png");
   background-size:cover;
 }
 
 .M {
-  background-image: url("/css/images/miss.png");
+  background-image: url("css/images/miss.png");
   background-size: cover;
 }
 
