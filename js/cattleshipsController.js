@@ -18,18 +18,18 @@ function cattleshipsController($firebaseObject, $firebaseArray) {
   self.size;
   var catsAndCows = [
     {ships: {
-    ship0: {name:"hipster cat", length:5, placed:false, initial:"FC", sound:"css/sounds/cat1.wav"},
-    ship1: {name:"grumpty cat", length:4, placed:false, initial:"FB", sound:"css/sounds/cat2.wav"}, 
-    ship2:{name:"angry cat", length:3, placed:false, initial:"FR", sound:"css/sounds/cat1.wav"},
-    ship3:{name:"possessed cat", length:3, placed:false, initial:"FS", sound:"css/sounds/cat1.wav"},
-    ship4:{name:"hissler cat", length:2, placed:false, initial:"FD", sound:"css/sounds/cat2.wav"}
+    ship0: {name:"hipster cat", length:5, placed:false, initial:"FC", sound:"../css/sounds/cat1.wav"},
+    ship1: {name:"grumpty cat", length:4, placed:false, initial:"FB", sound:"../css/sounds/cat2.wav"}, 
+    ship2:{name:"angry cat", length:3, placed:false, initial:"FR", sound:"../css/sounds/cat1.wav"},
+    ship3:{name:"possessed cat", length:3, placed:false, initial:"FS", sound:"../css/sounds/cat1.wav"},
+    ship4:{name:"hissler cat", length:2, placed:false, initial:"FD", sound:"../css/sounds/cat2.wav"}
   }},
   {ships: {
-    ship0: {name:"nosey cow", length:5, placed:false, initial:"BC", sound:"css/sounds/cow1.wav"},
-    ship1: {name:"psycho cow", length:4, placed:false, initial:"BB", sound:"css/sounds/cow2.wav"}, 
-    ship2:{name:"curious cow", length:3, placed:false, initial:"BR", sound:"css/sounds/cow1.wav"},
-    ship3:{name:"tame cow", length:3, placed:false, initial:"BS", sound:"css/sounds/cow2.wav"},
-    ship4:{name:"mad cow", length:2, placed:false, initial:"BD", sound:"css/sounds/cow1.wav"}
+    ship0: {name:"nosey cow", length:5, placed:false, initial:"BC", sound:"../css/sounds/cow1.wav"},
+    ship1: {name:"psycho cow", length:4, placed:false, initial:"BB", sound:"../css/sounds/cow2.wav"}, 
+    ship2:{name:"curious cow", length:3, placed:false, initial:"BR", sound:"../css/sounds/cow1.wav"},
+    ship3:{name:"tame cow", length:3, placed:false, initial:"BS", sound:"../css/sounds/cow2.wav"},
+    ship4:{name:"mad cow", length:2, placed:false, initial:"BD", sound:"../css/sounds/cow1.wav"}
   }}
   ]
   self.ships = {};
@@ -165,7 +165,7 @@ function cattleshipsController($firebaseObject, $firebaseArray) {
         targetsLeft--;
         self.checkForWin();
       } else {
-        var sound = new Audio('css/sounds/splash' + (Math.floor(Math.random() * 2) + 1) + '.wav');
+        var sound = new Audio('../css/sounds/splash' + (Math.floor(Math.random() * 2) + 1) + '.wav');
         sound.play();
       }
       self.attackBoard["column" + row_id].rows["row" + index] = board["column" + row_id].rows['row' + index] || 'M';
